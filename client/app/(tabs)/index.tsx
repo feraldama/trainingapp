@@ -9,7 +9,7 @@ import { ThemedView } from "@/components/ThemedView";
 export default function HomeScreen() {
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#1D3D47" }}
+      headerBackgroundColor={{ light: "#A1CEDC", dark: "#003036" }}
       headerImage={
         <Image
           source={require("@/assets/images/partial-react-logo.png")}
@@ -18,42 +18,42 @@ export default function HomeScreen() {
       }
     >
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Bienvenido!</ThemedText>
+        <ThemedText type="title">¡Bienvenido!</ThemedText>
         <HelloWave />
       </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText type="subtitle">Paso 1: Crea tu cuenta</ThemedText>
         <ThemedText>
-          Edit{" "}
-          <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText>{" "}
-          to see changes. Press{" "}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: "cmd + d",
-              android: "cmd + m",
-              web: "F12",
-            })}
-          </ThemedText>{" "}
-          to open developer tools.
+          Regístrate para guardar tu progreso y acceder a todas las funciones.
+          Presiona <ThemedText type="defaultSemiBold">Perfil</ThemedText> en la
+          esquina superior derecha para comenzar.
         </ThemedText>
       </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+        <ThemedText type="subtitle">Paso 2: Explora las funciones</ThemedText>
         <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
+          Navega por las diferentes secciones de la app usando el menú inferior.
+          Descubre todo lo que podemos ofrecerte.
         </ThemedText>
       </ThemedView>
+
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
+        <ThemedText type="subtitle">
+          Paso 3: Personaliza tu experiencia
+        </ThemedText>
         <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">
-            npm run reset-project
-          </ThemedText>{" "}
-          to get a fresh <ThemedText type="defaultSemiBold">app</ThemedText>{" "}
-          directory. This will move the current{" "}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{" "}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
+          Ve a <ThemedText type="defaultSemiBold">Ajustes</ThemedText> para
+          cambiar el tema, notificaciones y preferencias según tus gustos.
+        </ThemedText>
+      </ThemedView>
+
+      <ThemedView style={styles.stepContainer}>
+        <ThemedText type="subtitle">Paso 4: Empieza a usar la app</ThemedText>
+        <ThemedText>
+          ¡Todo listo! Ahora puedes comenzar a disfrutar de la experiencia
+          completa. ¿Qué te gustaría hacer primero?
         </ThemedText>
       </ThemedView>
     </ParallaxScrollView>
