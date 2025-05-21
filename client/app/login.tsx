@@ -10,11 +10,14 @@ import {
 import { useRouter } from "expo-router";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Colors } from "@/constants/Colors";
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const { theme } = useTheme();
 
   const handleLogin = () => {
     if (!email || !password) {
@@ -35,19 +38,35 @@ export default function LoginScreen() {
           Iniciar sesión
         </ThemedText>
         <TextInput
-          style={styles.input}
+          style={[
+            styles.input,
+            {
+              backgroundColor: Colors[theme].background,
+              color: Colors[theme].text,
+              borderColor: Colors[theme].icon,
+            },
+          ]}
           placeholder="Correo electrónico"
           value={email}
           onChangeText={setEmail}
           keyboardType="email-address"
           autoCapitalize="none"
+          placeholderTextColor={Colors[theme].icon}
         />
         <TextInput
-          style={styles.input}
+          style={[
+            styles.input,
+            {
+              backgroundColor: Colors[theme].background,
+              color: Colors[theme].text,
+              borderColor: Colors[theme].icon,
+            },
+          ]}
           placeholder="Contraseña"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
+          placeholderTextColor={Colors[theme].icon}
         />
         <Pressable style={styles.button} onPress={handleLogin}>
           <ThemedText
@@ -85,11 +104,9 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: "#ccc",
     borderRadius: 8,
     padding: 12,
     fontSize: 16,
-    backgroundColor: "#fff",
   },
   button: {
     backgroundColor: "#007AFF",

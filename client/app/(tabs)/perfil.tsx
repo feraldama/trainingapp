@@ -1,10 +1,14 @@
-import { Pressable, StyleSheet, Alert } from "react-native";
+import { Pressable, StyleSheet, Alert, Switch, View } from "react-native";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
 import { useRouter } from "expo-router";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Colors } from "@/constants/Colors";
 
-export default function TabTwoScreen() {
+export default function ProfileScreen() {
   const router = useRouter();
+  const { theme, toggleTheme } = useTheme();
+
   const handleLogout = () => {
     Alert.alert("Sesión cerrada", "Has cerrado sesión correctamente.", [
       {
@@ -22,10 +26,17 @@ export default function TabTwoScreen() {
       <ThemedText style={styles.text}>
         ¡Bienvenido a tu panel de usuario!
       </ThemedText>
-      <Pressable style={styles.button} onPress={handleLogout}>
+      <View style={styles.switchContainer}>
+        <ThemedText style={{ marginRight: 8 }}>Tema oscuro</ThemedText>
+        <Switch value={theme === "dark"} onValueChange={toggleTheme} />
+      </View>
+      <Pressable
+        style={[styles.button, { backgroundColor: Colors[theme].tint }]}
+        onPress={handleLogout}
+      >
         <ThemedText
           type="defaultSemiBold"
-          style={{ color: "#fff", textAlign: "center" }}
+          style={{ color: Colors[theme].background, textAlign: "center" }}
         >
           Cerrar sesión
         </ThemedText>
@@ -52,10 +63,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   button: {
-    backgroundColor: "#007AFF",
     paddingVertical: 14,
     borderRadius: 8,
     marginTop: 8,
     minWidth: 180,
+  },
+  switchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 32,
   },
 });

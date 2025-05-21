@@ -1,17 +1,45 @@
 import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
+  ThemeProvider as NavigationThemeProvider,
+  DarkTheme as NavigationDarkTheme,
+  DefaultTheme as NavigationDefaultTheme,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
-import { useColorScheme } from "@/hooks/useColorScheme";
+import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
+import { Colors } from "@/constants/Colors";
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
+const CustomLightTheme = {
+  ...NavigationDefaultTheme,
+  colors: {
+    ...NavigationDefaultTheme.colors,
+    background: Colors.light.background,
+    card: Colors.light.background,
+    text: Colors.light.text,
+    border: Colors.light.icon,
+    primary: Colors.light.tint,
+    notification: Colors.light.tint,
+  },
+};
+
+const CustomDarkTheme = {
+  ...NavigationDarkTheme,
+  colors: {
+    ...NavigationDarkTheme.colors,
+    background: Colors.dark.background,
+    card: Colors.dark.background,
+    text: Colors.dark.text,
+    border: Colors.dark.icon,
+    primary: Colors.dark.tint,
+    notification: Colors.dark.tint,
+  },
+};
+
+function InnerLayout() {
+  const { theme } = useTheme();
+  console.log("log: 🚀 theme 1:", theme);
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
@@ -22,7 +50,9 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+    <NavigationThemeProvider
+      value={theme === "dark" ? CustomDarkTheme : CustomLightTheme}
+    >
       <Stack>
         <Stack.Screen name="login" options={{ title: "Iniciar sesión" }} />
         <Stack.Screen name="register" options={{ title: "Registro" }} />
@@ -31,6 +61,14 @@ export default function RootLayout() {
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />
+    </NavigationThemeProvider>
+  );
+}
+
+export default function RootLayout() {
+  return (
+    <ThemeProvider>
+      <InnerLayout />
     </ThemeProvider>
   );
 }

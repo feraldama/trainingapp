@@ -5,11 +5,18 @@ import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
 import { ThemedText } from "@/components/ThemedText";
 import { ThemedView } from "@/components/ThemedView";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Colors } from "@/constants/Colors";
 
 export default function HomeScreen() {
+  const { theme } = useTheme();
+  console.log("log: 🚀 theme 4:", theme);
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: "#A1CEDC", dark: "#003036" }}
+      headerBackgroundColor={{
+        light: Colors.light.background,
+        dark: Colors.dark.background,
+      }}
       headerImage={
         <Image
           source={require("@/assets/images/partial-react-logo.png")}
@@ -17,7 +24,12 @@ export default function HomeScreen() {
         />
       }
     >
-      <ThemedView style={styles.titleContainer}>
+      <ThemedView
+        style={[
+          styles.titleContainer,
+          { backgroundColor: Colors[theme].background },
+        ]}
+      >
         <ThemedText type="title">¡Bienvenido!</ThemedText>
         <HelloWave />
       </ThemedView>
