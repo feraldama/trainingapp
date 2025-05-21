@@ -1,6 +1,5 @@
 import { Image } from "expo-image";
-import { StyleSheet, Pressable } from "react-native";
-import { Link } from "expo-router";
+import { StyleSheet } from "react-native";
 
 import { HelloWave } from "@/components/HelloWave";
 import ParallaxScrollView from "@/components/ParallaxScrollView";
@@ -30,26 +29,6 @@ export default function HomeScreen() {
           Presiona <ThemedText type="defaultSemiBold">Perfil</ThemedText> en la
           esquina superior derecha para comenzar.
         </ThemedText>
-        {/* <Link href="../register" asChild>
-          <Pressable style={styles.registerButton}>
-            <ThemedText
-              type="defaultSemiBold"
-              style={{ color: "#fff", textAlign: "center" }}
-            >
-              Ir a registro
-            </ThemedText>
-          </Pressable>
-        </Link>
-        <Link href="../login" asChild>
-          <Pressable style={styles.registerButton}>
-            <ThemedText
-              type="defaultSemiBold"
-              style={{ color: "#fff", textAlign: "center" }}
-            >
-              Ir a login
-            </ThemedText>
-          </Pressable>
-        </Link> */}
       </ThemedView>
 
       <ThemedView style={styles.stepContainer}>
