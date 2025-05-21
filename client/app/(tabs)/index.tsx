@@ -10,7 +10,6 @@ import { Colors } from "@/constants/Colors";
 
 export default function HomeScreen() {
   const { theme } = useTheme();
-  console.log("log: 🚀 theme 4:", theme);
   return (
     <ParallaxScrollView
       headerBackgroundColor={{

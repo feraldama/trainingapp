@@ -39,7 +39,6 @@ const CustomDarkTheme = {
 
 function InnerLayout() {
   const { theme } = useTheme();
-  console.log("log: 🚀 theme 1:", theme);
   const [loaded] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
