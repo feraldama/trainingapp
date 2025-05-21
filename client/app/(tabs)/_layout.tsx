@@ -46,11 +46,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="training"
+        name="perfil"
         options={{
-          title: "Training",
+          title: "Perfil",
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="paperplane.fill" color={color} />
+            <IconSymbol size={28} name="person.fill" color={color} />
+            // O usa 'person.circle.fill' si prefieres el estilo circular
           ),
         }}
       />
